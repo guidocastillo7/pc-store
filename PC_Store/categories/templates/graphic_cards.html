@@ -3,4 +3,12 @@
 
 <h1>Graphic Cards</h1>
 
+{% for graphic_card in graphic_cards %}
+    <div>
+        <li>
+            {{graphic_card.name}}
+        </li>
+    </div>
+{% endfor %}
+
 {% endblock %}

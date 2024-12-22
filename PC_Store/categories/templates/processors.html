@@ -3,4 +3,12 @@
 
 <h1>Processors</h1>
 
+{% for processor in processors %}
+    <div>
+        <li>
+            {{processor.name}}
+        </li>
+    </div>
+{% endfor %}
+
 {% endblock %}

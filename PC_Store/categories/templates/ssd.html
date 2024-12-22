@@ -3,4 +3,12 @@
 
 <h1>SSD</h1>
 
+{% for ss_drive in ss_drives %}
+    <div>
+        <li>
+            {{ss_drive.name}}
+        </li>
+    </div>
+{% endfor %}
+
 {% endblock %}

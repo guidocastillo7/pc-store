@@ -1,17 +1,50 @@
 from django.shortcuts import render
+from products.models import Product
 
 
 def monitors(request):
-    return render(request, "monitors.html")
+    monitors = Product.objects.filter(
+        category__name="Monitors"
+    )
+
+    context = {
+        "monitors": monitors
+    }
+
+    return render(request, "monitors.html", context)
 
 
 def ssd(request):
-    return render(request, "ssd.html")
+    ss_drives = Product.objects.filter(
+        category__name="SSD"
+    )
+
+    context = {
+        "ss_drives": ss_drives
+    }
+
+    return render(request, "ssd.html", context)
 
 
 def processors(request):
-    return render(request, "processors.html")
+    processors = Product.objects.filter(
+        category__name="Processors"
+    )
+
+    context = {
+        "processors": processors
+    }
+
+    return render(request, "processors.html", context)
 
 
 def graphic_cards(request):
-    return render(request, "graphic_cards.html")
+    graphic_cards = Product.objects.filter(
+        category__name="Graphic Cards"
+    )
+
+    context = {
+        "graphic_cards": graphic_cards
+    }
+
+    return render(request, "graphic_cards.html", context)

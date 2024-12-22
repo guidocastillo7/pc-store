@@ -3,4 +3,12 @@
 
 <h1>Monitors</h1>
 
+{% for monitor in monitors %}
+    <div>
+        <li>
+            {{monitor.name}}
+        </li>
+    </div>
+{% endfor %}
+
 {% endblock %}
