@@ -3,12 +3,24 @@
 
 <h1>Processors</h1>
 
-{% for processor in processors %}
-    <div>
-        <li>
-            {{processor.name}}
-        </li>
-    </div>
-{% endfor %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for processor in processors %}
+        <div class="col">
+            <div class="card w-50" style="max-height: 500px;">
+                <img src="{{processor.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body" style="overflow: hidden; text-overflow: ellipsis; white-space: normal;">
+                    <h5 class="card-title">{{processor.name}}</h5>
+                    <p class="card-text">{{processor.description}}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <small class="text-body-secondary"
+                    style="font-weight: bold; font-size: larger;">
+                    {{processor.price}}$
+                    </small>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
