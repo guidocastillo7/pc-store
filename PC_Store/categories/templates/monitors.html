@@ -9,7 +9,7 @@
             <div class="card w-50" style="max-height: 500px;">
                 <img src="{{monitor.image.url}}" class="card-img-top" alt="...">
                 <div class="card-body" style="overflow: hidden; text-overflow: ellipsis; white-space: normal;">
-                    <h5 class="card-title">{{monitor.name}}</h5>
+                    <a href="{% url 'products' monitor.id %}"><h5 class="card-title">{{monitor.name}}</h5></a>
                     <p class="card-text">{{monitor.description}}</p>
                 </div>
                 <div class="card-footer text-center">

@@ -9,7 +9,7 @@
             <div class="card w-50" style="max-height: 500px;">
                 <img src="{{graphic_card.image.url}}" class="card-img-top" alt="...">
                 <div class="card-body" style="overflow: hidden; text-overflow: ellipsis; white-space: normal;">
-                    <h5 class="card-title">{{graphic_card.name}}</h5>
+                    <a href="{% url 'products' graphic_card.id %}"><h5 class="card-title">{{graphic_card.name}}</h5></a>
                     <p class="card-text">{{graphic_card.description}}</p>
                 </div>
                 <div class="card-footer text-center">

@@ -9,7 +9,7 @@
             <div class="card w-50" style="max-height: 500px;">
                 <img src="{{ss_drive.image.url}}" class="card-img-top" alt="...">
                 <div class="card-body" style="overflow: hidden; text-overflow: ellipsis; white-space: normal;">
-                    <h5 class="card-title">{{ss_drive.name}}</h5>
+                    <a href="{% url 'products' ss_drive.id %}"><h5 class="card-title">{{ss_drive.name}}</h5></a>
                     <p class="card-text">{{ss_drive.description}}</p>
                 </div>
                 <div class="card-footer text-center">
