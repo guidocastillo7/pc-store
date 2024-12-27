@@ -3,24 +3,48 @@
 
 <h1>Products</h1>
 
-<div class="card mb-3" style="max-width: 1200px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="...">
-      </div>
+<div class="container mt-5">
+  <div class="row">
+      <!-- Tarjeta del Producto -->
       <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{product.name}}</h5>
-          <p class="card-text">{{product.description}}</p>
-          <p class="card-text">
-            <small class="text-body-secondary"
-            style="font-weight: bold; font-size: larger;">
-                ${{product.price}}
-            </small>
-          </p>
-        </div>
+          <div class="card">
+              <div class="row g-0">
+                  <div class="col-md-4">
+                      <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="Product">
+                  </div>
+                  <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title">{{product.name}}</h5>
+                          <p class="card-text">{{product.description}}</p>
+                          <h4 class="fw-bold">${{product.price}}</h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
+
+      <!-- Tarjeta de Compra -->
+      <div class="col-md-4">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title text-center">Buy options</h5>
+                  <div class="mb-3">
+                      <label for="quantity" class="form-label">Quantity</label>
+                      <select class="form-select" id="quantity">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                      </select>
+                  </div>
+                  <button class="btn btn-dark w-100">
+                      Add to Cart
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
 
 {% endblock %}
