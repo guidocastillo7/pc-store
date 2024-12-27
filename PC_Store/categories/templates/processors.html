@@ -3,19 +3,18 @@
 
 <h1>Processors</h1>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-3 justify-content-center mx-auto" style="max-width: 90%;">
     {% for processor in processors %}
-        <div class="col">
-            <div class="card w-50" style="max-height: 500px;">
-                <img src="{{processor.image.url}}" class="card-img-top" alt="...">
-                <div class="card-body" style="overflow: hidden; text-overflow: ellipsis; white-space: normal;">
+        <div class="col d-flex justify-content-center">
+            <div class="card" style="max-height: 500px; width: 90%;">
+                <img src="{{processor.image.url}}" class="card-img-top" alt="..." style="height: 250px; width: 100%; object-fit: contain;">
+                <div class="card-body" style="overflow: hidden;">
                     <a href="{% url 'products' processor.id %}"><h5 class="card-title">{{processor.name}}</h5></a>
-                    <p class="card-text">{{processor.description}}</p>
+                    <p class="card-text text-truncate">{{processor.description}}</p>
                 </div>
                 <div class="card-footer text-center">
-                    <small class="text-body-secondary"
-                    style="font-weight: bold; font-size: larger;">
-                    {{processor.price}}$
+                    <small class="text-body-secondary" style="font-weight: bold; font-size: larger;">
+                        ${{processor.price}}
                     </small>
                 </div>
             </div>

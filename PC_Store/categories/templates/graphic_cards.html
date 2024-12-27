@@ -3,19 +3,18 @@
 
 <h1>Graphic Cards</h1>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-3 justify-content-center mx-auto" style="max-width: 90%;">
     {% for graphic_card in graphic_cards %}
-        <div class="col">
-            <div class="card w-50" style="max-height: 500px;">
-                <img src="{{graphic_card.image.url}}" class="card-img-top" alt="...">
-                <div class="card-body" style="overflow: hidden; text-overflow: ellipsis; white-space: normal;">
+        <div class="col d-flex justify-content-center">
+            <div class="card" style="max-height: 500px; width: 90%;">
+                <img src="{{graphic_card.image.url}}" class="card-img-top" alt="..." style="height: 250px; width: 100%; object-fit: contain;">
+                <div class="card-body" style="overflow: hidden;">
                     <a href="{% url 'products' graphic_card.id %}"><h5 class="card-title">{{graphic_card.name}}</h5></a>
-                    <p class="card-text">{{graphic_card.description}}</p>
+                    <p class="card-text text-truncate">{{graphic_card.description}}</p>
                 </div>
                 <div class="card-footer text-center">
-                    <small class="text-body-secondary"
-                    style="font-weight: bold; font-size: larger;">
-                    {{graphic_card.price}}$
+                    <small class="text-body-secondary" style="font-weight: bold; font-size: larger;">
+                        ${{graphic_card.price}}
                     </small>
                 </div>
             </div>
