@@ -26,11 +26,13 @@
       <!-- Tarjeta de Compra -->
       <div class="col-md-4">
           <div class="card">
+            <form action="{% url 'add_product' product.id %}" method="post">
+            {% csrf_token %}
               <div class="card-body">
                   <h5 class="card-title text-center">Buy options</h5>
                   <div class="mb-3">
                       <label for="quantity" class="form-label">Quantity</label>
-                      <select class="form-select" id="quantity">
+                      <select name="quantity" class="form-select" id="quantity">
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -38,10 +40,11 @@
                           <option value="5">5</option>
                       </select>
                   </div>
-                  <button class="btn btn-dark w-100">
+                  <button type="submit" class="btn btn-dark w-100">
                       Add to Cart
                   </button>
               </div>
+            </form>
           </div>
       </div>
   </div>
