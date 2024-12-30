@@ -3,4 +3,26 @@
 
 <h1>Register</h1>
 
+<div class="container mt-4">
+    <div class="d-flex flex-column align-items-center">
+        <div class="form-control" style="width: 40%;">
+            <form action="">
+                {% csrf_token %}
+                {% for field in register_form %}
+                    <label class="form-label">{{field.label}}</label>
+                    {{field}}
+                    {% if field.help_text %}
+                        <div class="form-text">
+                            {{field.help_text}}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="d-flex justify-content-center my-2">
+                    <button class="btn btn-dark w-100">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
