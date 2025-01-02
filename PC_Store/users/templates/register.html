@@ -3,14 +3,33 @@
 
 <h1>Register</h1>
 
+{% if messages %}
+    {% for message in messages %}
+        <div class="d-flex flex-column align-items-center">
+            <div class="form-text fw-medium fs-6" style="color: red;" role="alert">
+                {{message}}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
 <div class="container mt-4">
     <div class="d-flex flex-column align-items-center">
         <div class="form-control" style="width: 40%;">
-            <form action="">
+            <form action="{% url 'create_user' %}" method="post">
                 {% csrf_token %}
                 {% for field in register_form %}
                     <label class="form-label">{{field.label}}</label>
                     {{field}}
+                    {% if form_errors %}
+                        <div class="form-text fw-medium" style="color: red;">
+                            {% for field_error_name, error in form_errors.items %}
+                                {% if field_error_name == field.name %}
+                                    {{error}}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     {% if field.help_text %}
                         <div class="form-text">
                             {{field.help_text}}
@@ -18,7 +37,7 @@
                     {% endif %}
                 {% endfor %}
                 <div class="d-flex justify-content-center my-2">
-                    <button class="btn btn-dark w-100">Register</button>
+                    <button type="submit" class="btn btn-dark w-100">Register</button>
                 </div>
             </form>
         </div>
