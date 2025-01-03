@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="text-center my-5">Profile</h1>
+
+{% if user_data %}
+    <ul>
+        <li>
+            {{user_data.first_name}}
+        </li>
+    </ul>
+{% else %}
+<div class="d-flex flex-column align-items-center">
+    <div class="alert alert-warning w-50 text-center fs-5" role="alert">
+        Error loading user data,
+        <a href="{% url 'user_profile' %}" class="alert-link">please reload the page.</a>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

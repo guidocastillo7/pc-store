@@ -44,7 +44,7 @@
               {{user.first_name}} {{user.last_name|slice:":1"}}.
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'user_profile' %}">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a></li>
               </ul>

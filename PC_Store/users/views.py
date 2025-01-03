@@ -1,7 +1,9 @@
 from django.shortcuts import (render, redirect)
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import (UserRegisterForm, UserLoginForm)
+from .models import User
 
 
 def login_user(request):
@@ -9,10 +11,11 @@ def login_user(request):
         form = UserLoginForm(request=request, data=request.POST)
 
         if form.is_valid():
+            redirect_url = request.POST["redirect_url"]
             user = form.get_user()
             login(request, user)
 
-            return redirect("/")
+            return redirect(redirect_url)
 
         else:
             form_error = [error for error in form.errors.values()]
@@ -24,8 +27,13 @@ def login_user(request):
             return render(request, "login.html", context)
 
     else:
+        if request.user.is_authenticated:
+            return redirect("/users/user_profile")
+
         login_form = UserLoginForm()
-        context = {"login_form": login_form}
+        context = {
+            "login_form": login_form,
+            "redirect_url": request.GET.get("next", "/")}
 
         return render(request, "login.html", context)
 
@@ -89,3 +97,16 @@ def logout_user(request):
     logout(request)
 
     return redirect("/")
+
+
+@login_required(login_url="/users/login")
+def user_profile(request):
+    try:
+        user = User.objects.get(pk=request.user.id)
+    except Exception as e:
+        user = None
+        print(f"Error cargando datos de usuario {e}")
+
+    context = {"user_data": user}
+
+    return render(request, "user_profile.html", context)
