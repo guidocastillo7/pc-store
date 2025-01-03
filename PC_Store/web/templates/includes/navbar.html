@@ -37,9 +37,18 @@
         </div>
         <div class="ms-auto">
           {% if user.is_authenticated %}
-            <a class="fs-5 link-light link-offset-2 link-offset-3-hover
-            link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-            href="#">{{user.first_name}} {{user.last_name|slice:":1"}}.</a>
+          <ul class="navbar-nav d-flex flex-row align-items-center">
+            <li class="nav-item dropdown me-2">
+              <button class="btn btn-outline-light dropdown-toggle"
+              data-bs-toggle="dropdown" aria-expanded="false" type="button">
+              {{user.first_name}} {{user.last_name|slice:":1"}}.
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a></li>
+              </ul>
+            </li>
           {% else %}
             <a class="btn btn-outline-light" href="/users/login">Login</a>
           {% endif %}
@@ -54,6 +63,7 @@
                   <span class="badge text-bg-dark">{{request.session.cart.items|length}}</span>
                 {% endif %}
             </a>
+          </ul>
         </div>
       </div>
     </div>
