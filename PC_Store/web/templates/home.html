@@ -3,6 +3,53 @@
 
 {% include "includes/header.html" %}
 
-<h1>Home</h1>
+<h1 class="text-center mb-5">PC Store - Start Building</h1>
+
+<div class="row row-cols-1 row-cols-md-4 g-3 justify-content-center mx-auto" style="max-width: 90%;">
+    <div class="col d-flex justify-content-center">
+        <div>
+            <a href="{% url 'monitors' %}" class="link-light link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                <img src="/static/images/monitors.jpg" class="card-img-top rounded-circle" alt="..."
+                style="height: 250px; width: 100%; object-fit: contain;">
+                <div class="card-body text-center">
+                    <h5>Monitors</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <div>
+            <a href="{% url 'graphic_cards' %}" class="link-light link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                <img src="/static/images/graphic_cards.webp" class="card-img-top rounded-circle" alt="..."
+                style="height: 250px; width: 100%; object-fit: contain;">
+                <div class="card-body text-center">
+                    <h5>Graphic Cards</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <div>
+            <a href="{% url 'processors' %}" class="link-light link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                <img src="/static/images/processors.jpg" class="card-img-top rounded-circle" alt="..."
+                style="height: 250px; width: 100%; object-fit: contain;">
+                <div class="card-body text-center">
+                    <h5>Processors</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <div>
+            <a href="{% url 'ssd' %}" class="link-light link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                <img src="/static/images/ssd.jpg" class="card-img-top rounded-circle" alt="..."
+                style="height: 250px; width: 100%; object-fit: contain;">
+                <div class="card-body text-center">
+                    <h5>SSD</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
