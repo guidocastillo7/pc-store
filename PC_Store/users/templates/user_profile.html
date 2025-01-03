@@ -3,18 +3,81 @@
 <h1 class="text-center my-5">Profile</h1>
 
 {% if user_data %}
-    <ul>
-        <li>
-            {{user_data.first_name}}
-        </li>
-    </ul>
-{% else %}
-<div class="d-flex flex-column align-items-center">
-    <div class="alert alert-warning w-50 text-center fs-5" role="alert">
-        Error loading user data,
-        <a href="{% url 'user_profile' %}" class="alert-link">please reload the page.</a>
+    <div class="d-flex flex-column align-items-center">
+        <form class="row g-3 w-50">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">First Name</label>
+                <input class="form-control bg-dark text-light fw-medium"
+                type="text" value="{{user_data.first_name}}" id="inputEmail4" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Last Name</label>
+                <input class="form-control bg-dark text-light fw-medium"
+                type="text" value="{{user_data.last_name}}" id="inputPassword4" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail5" class="form-label">Email</label>
+                <input class="form-control bg-dark text-light fw-medium"
+                type="text" value="{{user_data.email}}" id="inputEmail5" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword5" class="form-label">Username</label>
+                <input class="form-control bg-dark text-light fw-medium"
+                type="text" value="{{user_data.username}}" id="inputPassword5" readonly>
+            </div>
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input class="form-control bg-dark text-light fw-medium"
+                type="text" value="{{user_data.address}}" id="inputAddress" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress3" class="form-label">Phone Number</label>
+                <input class="form-control bg-dark text-light fw-medium"
+                type="text" value="{{user_data.phone}}" id="inputAddress3" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress2" class="form-label">Date Joined</label>
+                <input class="form-control bg-dark text-light fw-medium"
+                type="text" value="{{user_data.date_joined}}" id="inputAddress2" readonly>
+            </div>
+
+        <!-- POR SI ME SIRVE DESPUES
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                    Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div> -->
+        </form>
     </div>
-</div>
+
+{% else %}
+    <div class="d-flex flex-column align-items-center">
+        <div class="alert alert-warning w-50 text-center fs-5" role="alert">
+            Error loading user data,
+            <a href="{% url 'user_profile' %}" class="alert-link">please reload the page.</a>
+        </div>
+    </div>
 {% endif %}
 
 {% endblock %}
