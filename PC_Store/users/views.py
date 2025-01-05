@@ -22,7 +22,8 @@ def login_user(request):
             login_form = UserLoginForm()
 
             context = {"login_form": login_form,
-                       "form_error": form_error[0]}
+                       "form_error": form_error[0],
+                       "redirect_url": request.GET.get("next", "/")}
 
             return render(request, "login.html", context)
 
