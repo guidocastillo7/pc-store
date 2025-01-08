@@ -3,4 +3,37 @@
 
 <h1 class="text-center my-5">Checkout</h1>
 
+<div class="container mt-4">
+    <div class="card mx-auto my-3" style="width: 60%;">
+        <div class="card-body text-center">
+            <h4 class="fw-bold">Delivery address:</h4>
+            {% if address %}
+                <ul>
+                    <li class="text-start fw-medium">{{address}}</li>
+                </ul>
+                <a href="#" class="btn btn-dark btn-sm">Change address</a>
+            {% else %}
+                <a href="#" class="btn btn-dark btn-sm">Add delivery address</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card mx-auto my-3" style="width: 60%;">
+        <div class="card-body text-center">
+            <h4 class="fw-bold">Total amount:</h4>
+            <div class="mt-6">
+                <p class="text-center fs-4 fw-medium">${{ total_amount }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-auto my-3" style="width: 60%;">
+        <div class="card-body text-center">
+            <h4 class="fw-bold">Payment methods:</h4>
+            <div class="mt-6">
+                <button class="btn btn-dark mx-2" style="width: 20%;">Stripe</button>
+                <button class="btn btn-dark mx-2" style="width: 20%;">Paypal</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
