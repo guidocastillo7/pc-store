@@ -11,9 +11,9 @@
                 <ul>
                     <li class="text-start fw-medium">{{address}}</li>
                 </ul>
-                <a href="#" class="btn btn-dark btn-sm">Change address</a>
+                <a href="{% url 'edit_user_data' %}" class="btn btn-dark btn-sm">Change address</a>
             {% else %}
-                <a href="#" class="btn btn-dark btn-sm">Add delivery address</a>
+                <a href="{% url 'edit_user_data' %}" class="btn btn-dark btn-sm">Add delivery address</a>
             {% endif %}
         </div>
     </div>

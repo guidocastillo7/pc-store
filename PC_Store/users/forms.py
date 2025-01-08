@@ -36,3 +36,34 @@ class UserLoginForm(AuthenticationForm):
         super().__init__(request=request, *args, **kwargs)
         self.fields["username"].widget.attrs.update({"class":"form-control"})
         self.fields["password"].widget.attrs.update({"class":"form-control"})
+
+
+class EditUserDataForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username", "email", "first_name",
+                  "last_name", "address", "phone"]
+        widgets = {
+            "username": forms.TextInput(attrs={"class": "form-control"}),
+            "email": forms.EmailInput(attrs={"class": "form-control"}),
+            "first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "phone": forms.TextInput(attrs={"class": "form-control"}),
+            "address": forms.Textarea(attrs={
+                "class": "form-control",
+                "rows": 3,
+                "style": "resize: none;"
+            })
+        }
+
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+        filtered_users = User.objects.filter(
+            username__iexact=username
+        ).exclude(pk=self.instance.id)
+
+        if username and filtered_users.exists():
+            raise forms.ValidationError("A user with that username already exists.")
+
+        else:
+            return username

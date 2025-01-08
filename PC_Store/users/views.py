@@ -2,7 +2,7 @@ from django.shortcuts import (render, redirect)
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import (UserRegisterForm, UserLoginForm)
+from .forms import (UserRegisterForm, UserLoginForm, EditUserDataForm)
 from .models import User
 
 
@@ -113,5 +113,28 @@ def user_profile(request):
     return render(request, "user_profile.html", context)
 
 
+@login_required(login_url="/users/login")
 def edit_user_data(request):
-    return render(request, "edit_user_data.html")
+    if request.method == "POST":
+        update_form = EditUserDataForm(request.POST, instance=request.user)
+
+        if update_form.is_valid():
+            if update_form.has_changed():
+                update_form.save()
+
+            return redirect("/users/user_profile")
+
+        else:
+            form_errors = update_form.errors
+            edit_form = EditUserDataForm(request.POST)
+
+            context = {"edit_form": edit_form,
+                       "form_errors": form_errors}
+
+            return render(request, "edit_user_data.html", context)
+
+    edit_form = EditUserDataForm(instance=request.user)
+
+    context = {"edit_form": edit_form}
+
+    return render(request, "edit_user_data.html", context)

@@ -3,4 +3,34 @@
 
 <h1 class="text-center my-5">Edit data</h1>
 
+<div class="d-flex flex-column align-items-center">
+    <div class="form-control" style="width: 40%;">
+        <form action="{% url 'edit_user_data' %}" method="post">
+            {% csrf_token %}
+            {% for field in edit_form %}
+                <label class="form-label">{{field.label}}</label>
+                {{field}}
+                {% if form_errors %}
+                    <div class="form-text fw-medium" style="color: red;">
+                        {% for field_error_name, error in form_errors.items %}
+                            {% if field_error_name == field.name %}
+                                {{error}}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if field.help_text %}
+                    <div class="form-text">
+                        {{field.help_text}}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="d-flex justify-content-center my-2">
+                <a href="{% url 'user_profile' %}" class="btn btn-outline-danger w-25 mx-2">Cancel</a>
+                <button type="submit" class="btn btn-outline-success w-25 mx-2">Confirm</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 {% endblock %}
