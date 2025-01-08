@@ -111,3 +111,7 @@ def user_profile(request):
     context = {"user_data": user}
 
     return render(request, "user_profile.html", context)
+
+
+def edit_user_data(request):
+    return render(request, "edit_user_data.html")
